@@ -3,7 +3,7 @@ import { ImgDirective } from './img.directive';
 import { Component, DebugElement } from "@angular/core";
 
 @Component({
-  template: `<img appImg src='/assets/images/lorem_ipsum.png' />`
+  template: `<img id="elementid" appImg src='/assets/images/lorem_ipsum.png?id=elementid' />`
 })
 class TestImageErrorComponent { }
 
@@ -18,6 +18,10 @@ var ImageLoader = function(url) {
     this.image.src = this.url;
   };
 }
+
+function getQueryStringValue (source: string, key: string) {  
+  return decodeURIComponent(source.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+}  
 
 describe('ImgDirective', () => {
   let component: TestImageErrorComponent;
@@ -44,6 +48,20 @@ describe('ImgDirective', () => {
     });
 
     imageLoader.load();
+  });
+
+  it('should scroll to element id', () => {
+    const debugEl: HTMLElement = fixture.debugElement.nativeElement;
+    const img: HTMLElement = debugEl.querySelector('img');
+    let src = img['src'];
+
+    let elementId = getQueryStringValue(src, 'id');
+
+    let element = elementId ? document.querySelector(`#${elementId}`) : null;
+    if (element) {
+      setTimeout(() =>
+        element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' }), 250);
+    }
   });
 
 });
