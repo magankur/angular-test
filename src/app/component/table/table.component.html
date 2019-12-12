@@ -1,0 +1,10 @@
+<table>
+    <tr>
+        <ng-container *ngIf="tableHeading;" [ngTemplateOutlet]="tableHeading">
+        </ng-container>
+    </tr>
+    <ng-container *ngIf="tableContent;" [ngTemplateOutlet]="tableContent">
+    </ng-container>
+</table>
+
+<ng-container *ngIf="pagination" [ngTemplateOutlet]="pagination"></ng-container>

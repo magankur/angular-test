@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-45 {
+    width: 45%;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.border {
+    border: 1px solid #d8d4d4;
+}
+
+select,
+input {
+    background: #fff;
+    border-radius: 3px;
+    padding: 9px;
+    width: 100%;
+}
+
+select {
+    padding: 8px;
+}
+
+.ngx-pagination {
+    text-align: center;
+}
