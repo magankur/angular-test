@@ -7,13 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TableComponent implements OnInit {
 
+  // Table headers content
   @Input() tableHeading: any;
+  // Table body content
   @Input() tableContent: any;
+  // Table pagination
   @Input() pagination: any;
   
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

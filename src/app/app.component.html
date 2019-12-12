@@ -21,17 +21,15 @@
         </app-table>
 
         <ng-template #tableHeading>
-            <th *ngFor="let item of tableMenus" (click)="item.sortBy ? tableSort({title: item.title, sortBy: item.sortBy, array: filterUsersData}) : null" [ngClass]="{'c-pointer': item.sortBy}">
+            <th *ngFor="let item of tableMenus">
                 {{item.title}}
-                <i class="fa" [ngClass]="{'fa-sort-amount-asc': service.activeSortBy[item.sortBy]=='asc', 'fa-sort-amount-desc': service.activeSortBy[item.sortBy]=='desc'}"></i>
             </th>
-
         </ng-template>
 
         <ng-template #tableContent>
             <tr *ngFor="let item of filterUsersData | filter:search | paginate: { itemsPerPage: limit, currentPage: page, totalItems: totalUsers }">
                 <td>{{item.id}}</td>
-                <td><img width="50" height="50" [src]="item.avatar" appImg /></td>
+                <td><img width="50" height="50" [src]="item.avatar" /></td>
                 <td>{{item.first_name}} {{item.last_name}}</td>
                 <td>{{item.email}}</td>
             </tr>
@@ -46,7 +44,7 @@
     <hr>
 
     <div id="elementid">
-        <img class="w-100" appImg [src]="sampleImage" alt="Sample Image">
+        <img class="w-100" [src]="sampleImage" alt="Sample Image" appImg>
     </div>
 
 </div>
